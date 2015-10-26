@@ -56,7 +56,8 @@ NSString *const kIQTextFieldReturnKeyType   =   @"kIQTextFieldReturnKeyType";
 
 - (instancetype)init
 {
-    return [self initWithViewController:nil];
+    self = [self initWithViewController:nil];
+    return self;
 }
 
 -(instancetype)initWithViewController:(UIViewController*)controller

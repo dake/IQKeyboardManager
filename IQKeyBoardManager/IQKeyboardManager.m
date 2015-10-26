@@ -1517,16 +1517,15 @@ void _IQShowLog(NSString *logString);
 /**	Get all UITextField/UITextView siblings of textFieldView. */
 -(NSArray*)responderViews
 {
-    UIView *superConsideredView = nil;
+    UIView *superConsideredView;
     
     //If find any consider responderView in it's upper hierarchy then will get deepResponderView.
     for (Class consideredClass in _toolbarPreviousNextConsideredClass)
     {
         superConsideredView = [_textFieldView superviewOfClassType:consideredClass];
         
-        if (superConsideredView != nil) {
+        if (superConsideredView != nil)
             break;
-        }
     }
     
     //If there is a superConsideredView in view's hierarchy, then fetching all it's subview that responds. No sorting for superConsideredView, it's by subView position.    (Enhancement ID: #22)
@@ -1569,12 +1568,12 @@ void _IQShowLog(NSString *logString);
     UIViewController *textFieldViewController = [_textFieldView viewController];
     
     //If found any toolbar disabled classes then return. Will not add any toolbar.
-    for (Class disabledToolbarClass in _disabledToolbarClasses) {
-        if ([textFieldViewController isKindOfClass:disabledToolbarClass]) {
+    for (Class disabledToolbarClass in _disabledToolbarClasses)
+        if ([textFieldViewController isKindOfClass:disabledToolbarClass])
+        {
             [self removeToolbarIfRequired];
             return;
         }
-    }
     
     //	Getting all the sibling textFields.
     NSArray *siblings = [self responderViews];
@@ -1584,9 +1583,8 @@ void _IQShowLog(NSString *logString);
     {
         UITextField *textField = nil;
         
-        if ([siblings count] > 0) {
+        if ([siblings count])
             textField = [siblings objectAtIndex:0]; //Not using firstObject method because iOS5 doesn't not support 'firstObject' method.
-        }
         
         //Either there is no inputAccessoryView or if accessoryView is not appropriate for current situation(There is Previous/Next/Done toolbar).
         //setInputAccessoryView: check   (Bug ID: #307)
